@@ -1,0 +1,19 @@
+// Based on idea described here:
+// https://www.mcoscillator.com/learning_center/weekly_chart/rainbow_convergence_some_charting_magic/
+
+
+x10T[0] = Close.ema(19)
+x5T[0] = Close.ema(39)
+
+if(x10T[0] > x5T[0]) [
+  oscUnch[0] = x10T[0] + (x10T[0] - x5T[0])
+  sum10[0] =  x5T[0] - (x10T[0] - x5T[0])
+] else [
+  oscUnch[0] = x10T[0] - (x5T[0] - x10T[0])
+  sum10[0] =  x5T[0] - (x10T[0] - x5T[0])
+]
+
+plot1[0] = oscUnch[0]
+plot2[0] = Close.ema(19)
+plot3[0] = Close.ema(39)
+plot4[0] = sum10[0]
